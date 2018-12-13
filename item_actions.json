@@ -1,0 +1,12 @@
+[
+ {
+	"type" : "item_action",
+	"id" :"IUSE_MINUTE",
+	"name" : "Use"
+ },
+ {
+	"type" : "item_action",
+	"id" :"IUSE_STORE_MINUTE",
+	"name" : "Use"
+ }
+]
