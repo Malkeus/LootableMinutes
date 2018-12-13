@@ -8,17 +8,14 @@ end
 
 function store_minute(item, active)
 	player:item_handling_cost(item, true, 2)
-	
 	local moves = player.movecounter
 	player:mod_moves(-moves)
-	
 	if (math.floor(item.charges) < item:ammo_capacity()) then
 		item.charges = item.charges + moves
 		if (item.charges > item:ammo_capacity()) then
 			item.charges = item:ammo_capacity()
 		end
 	end
-	
 	if (item.charges > 9500) then
 		player:i_add(item("minute", 1))
 		item.charges = 0
@@ -26,9 +23,9 @@ function store_minute(item, active)
 	else
 		game.add_msg("Time jumps past you, the net strangely shimmers")
 	end
-	
-	if (moves <= 1) then
-		player:process_turn()
+	if (item.charges < 0) then
+		player:mod_moves(1)
+		item.charges = 0
 	end
 end
 
