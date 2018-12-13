@@ -6,28 +6,27 @@ function minute(item, active)
 	game.add_msg("You feel as if you suddenly have plenty of time to spare, an entire minute in fact, best make good use of it")
 end
 
-function store_minute(item, active)
-	player:item_handling_cost(item, true, 2)
-	local moves = player.movecounter
-	player:mod_moves(-moves)
-	if (math.floor(item.charges) < item:ammo_capacity()) then
-		item.charges = item.charges + moves
-		if (item.charges > item:ammo_capacity()) then
-			item.charges = item:ammo_capacity()
-		end
-	end
-	if (item.charges > 9500) then
-		player:i_add(item("minute", 1))
-		item.charges = 0
-		game.add_msg("The net shudders and congeals a literal piece of Time itself.")
-	else
-		game.add_msg("Time jumps past you, the net strangely shimmers")
-	end
-	if (item.charges < 0) then
-		player:mod_moves(1)
-		item.charges = 0
-	end
+Timenet = nil
+TimenetCast = false
+
+function cast_timenet(item, active)
+	Timenet = player:i_add(item("time_net_active",1))
+	Timenet.charges = item.charges
+	TimenetCast = true
+	player:i_rem(item)
+	game.add_msg("You try to cast the net but it doesn't move, you feel sluggish.")
+	player:set_value("TimenetCast", "true")
+end
+
+function fold_timenet(item, active)
+	Timenet = player:i_add(item("time_net",1))
+	Timenet.charges = item.charges
+	TimenetCast = false
+	player:i_rem(item)
+	game.add_msg("You fold up the net and feel much faster.")
+	player:set_value("TimenetCast", "false")
 end
 
 game.register_iuse("IUSE_MINUTE", minute)
-game.register_iuse("IUSE_STORE_MINUTE", store_minute)
+game.register_iuse("IUSE_CAST_TIMENET", cast_timenet)
+game.register_iuse("IUSE_FOLD_TIMENET", fold_timenet)

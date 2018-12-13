@@ -10,7 +10,7 @@
 		"material": ["bone"],
 		"weight": 0,
 		"volume": 0,
-		"use_action": "IUSE_MINUTE"
+		"use_action":"IUSE_MINUTE"
 	},
 	{
 		"id": "time_net",
@@ -25,9 +25,21 @@
 		"volume": 0,
 		"max_charges": 10000,
 		"initial_charges": 0,
-		"use_action": {
-			"type": "IUSE_STORE_MINUTE",
-			"moves": 2
-		}
+		"use_action":"IUSE_CAST_TIMENET"
+	},
+	{
+		"id": "time_net_active",
+		"type": "TOOL",
+		"symbol": "%",
+		"color": "gray",
+		"name": "Temporal Net (Cast)",
+		"description": "This Temporal Net has been cast into the winds of time, you move more slowly as it captures bits of Time from you.",
+		"price": 0,
+		"material": ["superalloy"],
+		"weight": 0,
+		"volume": 0,
+		"max_charges": 10000,
+		"initial_charges": 0,
+		"use_action":"IUSE_FOLD_TIMENET"
 	}
 ]
