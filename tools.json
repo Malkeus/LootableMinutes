@@ -23,12 +23,12 @@
 		"material": ["superalloy"],
 		"weight": 0,
 		"volume": 0,
-		"max_charges": 10000,
+		"max_charges": 20000,
 		"initial_charges": 0,
 		"use_action":"IUSE_CAST_TIMENET"
 	},
 	{
-		"id": "time_net_active",
+		"id": "time_net_capture",
 		"type": "TOOL",
 		"symbol": "%",
 		"color": "gray",
@@ -38,7 +38,22 @@
 		"material": ["superalloy"],
 		"weight": 0,
 		"volume": 0,
-		"max_charges": 10000,
+		"max_charges": 20000,
+		"initial_charges": 0,
+		"use_action":"IUSE_FOLD_TIMENET"
+	},
+	{
+		"id": "time_net_release",
+		"type": "TOOL",
+		"symbol": "%",
+		"color": "gray",
+		"name": "Temporal Net (Release)",
+		"description": "This Temporal Net has been released, the winds of Time push you forward, you feel faster.",
+		"price": 0,
+		"material": ["superalloy"],
+		"weight": 0,
+		"volume": 0,
+		"max_charges": 20000,
 		"initial_charges": 0,
 		"use_action":"IUSE_FOLD_TIMENET"
 	}
